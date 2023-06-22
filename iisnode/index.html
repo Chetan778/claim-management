@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>iisnode logs</title>
+    <style type="text/css">
+        body
+        {
+            font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+        td, th
+        {
+            border: 1px solid lightgray;
+            padding: 3px 7px 2px 7px;
+        }
+        th
+        {
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 4px;
+            background-color: Gray;
+            color: #ffffff;
+        }
+        td.stderr
+        {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <table id="logFilesTable">
+        <tr>
+            <th>
+                Computer name
+            </th>
+            <th>
+                PID
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+    </table>
+    <p id="lastUpdated"></p>
+    <script type="text/javascript">
+
+        // this is replaced with actual data at runtime by code in interceptor.js
+        var logFiles = [{"file":"IN-LT-TVX02657-13552-stderr-1687165171526.txt","computername":"IN-LT-TVX02657","pid":13552,"type":"stderr","created":1687165171526},{"file":"IN-LT-TVX02657-13552-stdout-1687165171520.txt","computername":"IN-LT-TVX02657","pid":13552,"type":"stdout","created":1687165171520},{"file":"IN-LT-TVX02657-13668-stderr-1687337909471.txt","computername":"IN-LT-TVX02657","pid":13668,"type":"stderr","created":1687337909471},{"file":"IN-LT-TVX02657-13668-stdout-1687337909466.txt","computername":"IN-LT-TVX02657","pid":13668,"type":"stdout","created":1687337909466},{"file":"IN-LT-TVX02657-16016-stderr-1687424554772.txt","computername":"IN-LT-TVX02657","pid":16016,"type":"stderr","created":1687424554772},{"file":"IN-LT-TVX02657-16016-stdout-1687424554763.txt","computername":"IN-LT-TVX02657","pid":16016,"type":"stdout","created":1687424554763},{"file":"IN-LT-TVX02657-16300-stderr-1686674139051.txt","computername":"IN-LT-TVX02657","pid":16300,"type":"stderr","created":1686674139051},{"file":"IN-LT-TVX02657-16300-stdout-1686674139045.txt","computername":"IN-LT-TVX02657","pid":16300,"type":"stdout","created":1686674139045},{"file":"IN-LT-TVX02657-16636-stderr-1686905408065.txt","computername":"IN-LT-TVX02657","pid":16636,"type":"stderr","created":1686905408065},{"file":"IN-LT-TVX02657-16636-stdout-1686905408059.txt","computername":"IN-LT-TVX02657","pid":16636,"type":"stdout","created":1686905408059},{"file":"IN-LT-TVX02657-17264-stderr-1686751116410.txt","computername":"IN-LT-TVX02657","pid":17264,"type":"stderr","created":1686751116410},{"file":"IN-LT-TVX02657-17264-stdout-1686751116405.txt","computername":"IN-LT-TVX02657","pid":17264,"type":"stdout","created":1686751116405},{"file":"IN-LT-TVX02657-19472-stderr-1687362656022.txt","computername":"IN-LT-TVX02657","pid":19472,"type":"stderr","created":1687362656022},{"file":"IN-LT-TVX02657-19472-stdout-1687362656017.txt","computername":"IN-LT-TVX02657","pid":19472,"type":"stdout","created":1687362656017},{"file":"IN-LT-TVX02657-20604-stderr-1687431935073.txt","computername":"IN-LT-TVX02657","pid":20604,"type":"stderr","created":1687431935073},{"file":"IN-LT-TVX02657-20604-stdout-1687431935070.txt","computername":"IN-LT-TVX02657","pid":20604,"type":"stdout","created":1687431935070},{"file":"IN-LT-TVX02657-28428-stderr-1686848224134.txt","computername":"IN-LT-TVX02657","pid":28428,"type":"stderr","created":1686848224134},{"file":"IN-LT-TVX02657-28428-stdout-1686848224130.txt","computername":"IN-LT-TVX02657","pid":28428,"type":"stdout","created":1686848224130},{"file":"IN-LT-TVX02657-3392-stderr-1687439050671.txt","computername":"IN-LT-TVX02657","pid":3392,"type":"stderr","created":1687439050671},{"file":"IN-LT-TVX02657-3392-stdout-1687439050666.txt","computername":"IN-LT-TVX02657","pid":3392,"type":"stdout","created":1687439050666},{"file":"IN-LT-TVX02657-3472-stderr-1686816888187.txt","computername":"IN-LT-TVX02657","pid":3472,"type":"stderr","created":1686816888187},{"file":"IN-LT-TVX02657-3472-stdout-1686816888182.txt","computername":"IN-LT-TVX02657","pid":3472,"type":"stdout","created":1686816888182}];
+        var lastUpdated = 1687439051133;
+        var date = new Date();
+
+        date.setTime(lastUpdated);
+        document.getElementById('lastUpdated').innerHTML = 'Index was last updated ' + date;
+
+        logFiles.sort(function (a, b) {
+            return b.created - a.created;
+        });
+
+        var logFilesTable = document.getElementById("logFilesTable");
+        for (var i = 0; i < logFiles.length; i++) {
+            var logFile = logFiles[i];
+            date.setTime(logFile.created);
+            var row = logFilesTable.insertRow(-1);
+            var computerNameCell = row.insertCell(0);
+            var pidCell = row.insertCell(1);
+            var typeCell = row.insertCell(2);
+            var dateCell = row.insertCell(3);
+            var logCell = row.insertCell(4);
+            computerNameCell.innerHTML = logFile.computername;
+            pidCell.innerHTML = logFile.pid.toString();
+            typeCell.innerHTML = logFile.type;
+            typeCell.setAttribute('class', logFile.type);
+            dateCell.innerHTML = date.toString();
+            logCell.innerHTML = '<a href="' + logFile.file + '">log</a>';
+        };
+
+    </script>
+</body>
+</html>
