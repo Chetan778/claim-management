@@ -1,0 +1,14 @@
+.monthreport{
+    margin-left: 110px;
+}
+
+.reportdetail {
+
+    margin-left: 174px;
+}
+
+.detailbox {
+
+    z-index: 9999;
+    position: absolute;
+}

@@ -1,0 +1,162 @@
+.bg{
+    /* background-color: #89CFF0; */
+    height:520px;
+}
+
+.header{
+    background-color: rgba(7, 78, 170, 0.61);
+    color: darkgoldenrod;
+}
+
+.tabledata{
+
+    border-radius: 5px;
+}
+
+
+  .textbox{
+    /* width: 100px; height: 20px; */
+    border-radius: 5px;
+    margin-left: 52px;
+   
+  }
+
+  .textbox_1{
+    width: 54px;;
+    border-radius: 5px;
+    /* margin-left: 62px; */
+    /* margin-bottom: 50px; */
+    /* margin-right: 1000px; */
+   
+  }
+
+  .submitbutton{
+    background-color: #044da0;
+    /* background-color: rgb(76, 76, 255); */
+    /* width: 150px; */
+    border-radius: 18px;
+
+    padding: 5px;
+    /* background: rgb(42, 56, 217); */
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    width: 120px;
+    margin: 20px 0;
+    border-radius: 20px;
+    margin-left: 15px;
+
+}
+
+/* .h{
+  height: 70px;
+} */
+
+.i{
+    height: 70px;
+  }
+
+  .claim {
+      width: 130px;
+  }
+
+  .name{
+      width : 100px;
+  }
+  
+  .day{
+      width:88px;
+  }
+
+  .next{
+    /* margin-left: 600px; */
+  }
+
+  .back{
+    margin-left: 380px;
+  }
+
+
+  .app {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    height: 8vh;
+    /* width: 20vw; */
+  }
+  .dropdown-container {
+    /* width: 1vw; */
+  }
+
+  .d{
+    /* margin-bottom: 50px; */
+
+    /* margin-right: 100px; */
+    
+  }
+
+  .c{
+    /* margin-left: 500px; */
+  }
+
+  .checkbox{
+    padding-top: 1px;
+  }
+ 
+
+  /* .callout{
+    margin-top: 60px;
+  } */
+
+  .rosterpagerow{
+    /* margin-left: 130px; */
+    /* margin-right: 850px; */
+  }
+
+  .rostertable{
+
+    /* margin-left: 70px; */
+    /* margin-bottom: 1100px; */
+
+  }
+
+  .rosterpage{
+    margin-left: 182px;
+  }
+
+  .rostername{
+    color: #003366;
+  }
+
+  .name{
+    background-color: #98AFC7;
+  }
+
+ .back:hover{
+
+  background-color:#72d5ee;
+ }
+
+ .next:hover{
+
+  background-color:#72d5ee;
+ }
+
+ .form-check-input:hover  {
+  background-color: #ccc;
+}
+
+.form-check input:checked {
+  background-color: #002B4E;
+}
+
+.form-check input::after{
+
+  content: "";
+  position: absolute;
+  display: none;
+}
+
