@@ -1,10 +1,14 @@
-const express = require('express')
-
-const app = express();
-
-const PORT = process.env.PORT || 3002;
-
+var express = require('express');
+var app = express();
+var port = process.env.PORT || 3002;
+const r = express.Router()
+app.use( express.static( "public" ) );
+var server = require('http').createServer(app);
 app.use(express.json());
+
+ const path = require('path');
+ app.use(express.static(path.join(__dirname, 'build')));
+
 
 app.get('/test', (req, res, next) => {
 
@@ -12,4 +16,4 @@ app.get('/test', (req, res, next) => {
 });
 
 
-app.listen(PORT, () => console.log(`app listening on port ${PORT}`));
+server.listen(port, () => console.log(`this app listening on port ${port}`));
