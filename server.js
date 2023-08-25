@@ -1,5 +1,5 @@
 var corsOptions = {
-    origin: 'http://10.155.3.231:3007',
+    origin: 'http://10.155.2.236:3007',
     credentials: true,
     authenticate: true,
     authorization: true,
@@ -53,8 +53,13 @@ app.get('*',function b(req, res, next) {
 })
 
 
+app.get('/test', (req, res, next) => {
 
-server.listen(port, function () {
+    res.send("Hello from dept")
+});
+
+
+server.listen(port,'0.0.0.0', function () {
     console.log(
         'Express server listening on port %d in %s mode',
         port,
