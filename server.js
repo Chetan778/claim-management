@@ -21,7 +21,7 @@
 // app.use(cors(corsOptions));
 
 var corsOptions = {
-    origin: 'http://10.155.3.231:3007',
+    origin: 'http://10.155.2.236:3007',
     credentials: true,
     authenticate: true,
     authorization: true,
@@ -214,15 +214,19 @@ app.get('/date', (req, res, next) => {
     var d = [];
     var count = 7;
     var count_2 = 7;
+    var count_3 = 7;
     var week = 1;
     var week_2 = 0;
+    var week_3 = 0;
     var day = 0;
     var day_2 = 0;
+    var day_3 = 0;
     var j = 0;
+    var k = 0;
     var val = 0;
     // console.log(year)
 
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < 36; i++) {
 
         // var lastmonth = new Date(year,0,1)
 
@@ -263,6 +267,7 @@ app.get('/date', (req, res, next) => {
                         date: date_g.getDate(),
                         day: dayList[date_g.getDay()],
                         month: date_g.getMonth() + 1,
+                        monthname: months[date_g.getMonth()],
                         week: week,
                         year: year - 1
 
@@ -272,14 +277,10 @@ app.get('/date', (req, res, next) => {
                 days_i.push(d)
                 date_g.setDate(date_g.getDate() + 1)
             }
-
-
         }
-        else {
+        else if(i >= 12 && i < 24) {
 
             var date_g = new Date(year, j, 1);
-
-
 
             while (date_g.getMonth() === j) {
 
@@ -324,7 +325,7 @@ app.get('/date', (req, res, next) => {
 
                     if (day_2 <= count_2) {
                         week_2 = week_2
-                        console.log(week_2)
+                        // console.log(week_2)
                     }
                     else {
                         count_2 = count_2 + 7
@@ -339,6 +340,7 @@ app.get('/date', (req, res, next) => {
                         date: date_g.getDate(),
                         day: dayList[date_g.getDay()],
                         month: date_g.getMonth() + 1,
+                        monthname: months[date_g.getMonth()],
                         week: week_2,
                         year: year
 
@@ -352,11 +354,60 @@ app.get('/date', (req, res, next) => {
             ++j;
 
         }
+        else {
+
+            var date_g = new Date(year + 1, k, 1);
+            console.log(date_g)
+
+            while (date_g.getMonth() === k) {
+
+
+
+                var startDate = new Date(date_g.getFullYear(), 0, 1);
+                var enddate = new Date(date_g.getFullYear(), k, date_g.getDate())
+
+                var numDays = enddate.getDate();
+
+                var dayss = Math.floor((enddate - startDate + 86400000) / 86400000);
+
+                if (date_g.getDate()) {
+                    day_3++;
+                    // console.log(date_g.getDate() + "  " + day)
+                    // dayarr.push(day)
+                }
+
+                if (day_3 <= count_3) {
+                    week_3 = week_3
+                }
+                else {
+                    count_3 = count_3 + 7
+                    week_3++
+                    week_3 = week_3
+                }
+
+                d = [
+                    {
+                        date: date_g.getDate(),
+                        day: dayList[date_g.getDay()],
+                        month: date_g.getMonth() + 1,
+                        monthname: months[date_g.getMonth()],
+                        week: week_3,
+                        year: year + 1
+
+                    }
+
+                ]
+                days_i.push(d)
+                date_g.setDate(date_g.getDate() + 1)
+            }
+            k++;
+        }
+        
     }
 
 
 
-    res.status(200).json(days_i);
+    res.json(days_i)
 });
 
 
@@ -407,6 +458,21 @@ app.get('/:tName1/:tName2/:cName1/:cName2/:cName3/:id', (req, res) => {
         if (error) throw error;
         res.status(200).json(result.rows);
     });
+})
+
+
+app.get('/:tName1/:tName2/:cName1/:cName2', (req,res) => {
+
+    const q = 'select * from ' + req.params.tName1 + ' t1 inner join ' + req.params.tName2 + ' t2 on t1.' + req.params.cName1 +
+    ' = t2.' + req.params.cName2
+
+    console.log("q = "+q)
+
+    pool.query(q, (error, result) => {
+        if (error) throw error;
+        res.status(200).json(result.rows);
+    });
+
 })
 
 // -----------------------------------------------------------------------------------------------------------

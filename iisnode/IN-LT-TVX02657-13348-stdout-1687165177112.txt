@@ -1,1 +1,0 @@
-app listening on port \\.\pipe\eb252c96-0a9b-44ee-a709-dbbef65ea0fa
